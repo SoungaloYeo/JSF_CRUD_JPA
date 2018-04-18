@@ -1,7 +1,7 @@
 # jsf_parc
 juste a JSF CRUD
 **********************************************************************
-This project is a Maven JSF (Primeface) crud for Java EE lerners.
-Using JPA. This project is not commpleted. For a tart it can help the beguinners.
+This project is a Maven JSF (Primeface) crud for Java EE learners.
+Using JPA. This project is not completed. For a start it can help the beginners.
 
 soungaloyeo@gmail.com from Ivory Coast
