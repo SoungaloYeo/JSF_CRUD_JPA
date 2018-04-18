@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="jsf_parcPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jsf_parcauto?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <!--Dialect is telling your Hibernate application which SQL it has to generate to talk to the DB-->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.connection.shutdown" value="true"/>
+      <!-- Drop and re-create the database schema on startup  -->
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <!--show sql request in the console-->
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

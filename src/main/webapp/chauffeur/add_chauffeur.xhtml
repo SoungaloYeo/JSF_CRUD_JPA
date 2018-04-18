@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{traduction.localeCode}" >
+
+        <body>
+
+            <ui:composition template="./../index.xhtml">
+
+                <ui:define name="content">
+
+                    <h:form style="margin-left: 22%; font-weight: bold">
+                        <h:commandButton action="list_chauffeur" value="#{msg['lien.retourchauffeur']}"
+                                         style="border-radius: 15px; box-shadow: 2px 2px 2px black;
+                                         font-size: 13px; background-color:  yellowgreen; color:
+                                         white; margin-left: 40%;margin-top: 1%"/>
+                    </h:form>
+                    <br/>  <br/><br/>
+                    <h:form style="margin-left: 22%; font-weight: bold">
+                        <h:outputLabel value="#{msg['ajout.nvochauffeur']}" 
+                                       style="font-size: 20px; color: brown; margin-left: 45px"/>
+
+                        <h:panelGrid columns="3" style="margin-top: 2% " cellpadding="5px">
+                            <h:outputLabel value="#{msg['entete.tnom']}" />
+                            <h:inputText  value="#{chauffeurMB.c.nom}" id="nom" required="true" requiredMessage="#{gestionMessage.messageRequit}"/>
+                            <h:message for="nom" style="color: orange"/>
+
+                            <h:outputLabel value="#{msg['entete.tcprenom']}" />
+                            <h:inputText  value="#{chauffeurMB.c.prenom}" id="prenom" required="true" requiredMessage="#{gestionMessage.messageRequit}"/>
+                            <h:message for="prenom" style="color: red"/>
+
+                            <h:outputLabel value="#{msg['entete.tcdateembauche']}" />
+                            <p:calendar id="date" value="#{chauffeurMB.c.dateEmbauche}" effect="fold" style="width: 60%" required="true0" requiredMessage="#{gestionMessage.messageRequit}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </p:calendar>
+                            <h:message for="date" style="color: red"/>
+                        </h:panelGrid>
+
+                        <hr style="margin-left: 00%; color: brown" width="27%"/>
+
+                        <h:panelGrid columns="2">
+
+                            <h:commandButton value="#{msg.btnvalider} " action="#{chauffeurMB.add()}"
+                                             style="border-radius: 15px; width: 40%; 
+                                             box-shadow: 2px 2px 2px black; font-size: 13px;
+                                             background-color:  chocolate; color: white; margin-left: 65%" />
+
+                            <h:commandButton value="#{msg.btnannuler}" action="#{chauffeurMB.annuler()}" 
+                                             style="border-radius: 15px; 
+                                             box-shadow: 2px 2px 2px black; font-size: 13px;
+                                             background-color:  chocolate; color: white; margin-left: 10%"/>
+                        </h:panelGrid>
+                    </h:form>
+
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>
+</html>

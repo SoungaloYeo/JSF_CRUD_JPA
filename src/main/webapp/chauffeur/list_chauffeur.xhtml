@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{traduction.localeCode}" >
+
+        <body>
+
+            <ui:composition template="./../index.xhtml">
+
+                <ui:define name="content">
+                    <f:view>
+                        <h:form style="font-weight: bold">
+                            <h:commandButton action="add_chauffeur" value="#{msg['lien.ajouterunchauffeur']}" 
+                                             style="border-radius: 15px; box-shadow: 2px 2px 2px black;
+                                             font-size: 13px; background-color:  yellowgreen; color: white; 
+                                             margin-left: 55%; margin-top: 1%"/><br/>
+
+                            <h1>&nbsp;&nbsp;<h:outputText value="#{msg['titre.listedeschauffeurs']}"
+                                                          style="color: white;
+                                                          font-size: 50px; 
+                                                          margin-left: 7%"/></h1>
+                            <h:panelGrid id="panel" columns="1" cellspacing="20px" 
+                                         style="margin-left: 5%;
+                                         border-color: brown">
+
+                                <h:column >
+                                    <h:dataTable value="#{chauffeurMB.listChauffeur}" var="chauffeur" 
+                                                 style="font-size: 15px">
+
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg['entete.tnom']}"
+                                                              style="color: white; 
+                                                              font-size: 20px;
+                                                              text-align: center"/>
+                                            </f:facet>
+                                            <h:outputText value="#{chauffeur.nom}"/>
+                                        </h:column>
+
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg['entete.tcprenom']}" 
+                                                              style="color: white; 
+                                                              font-size: 20px; 
+                                                              text-align: center"/>
+                                            </f:facet>
+                                            <h:outputText value="#{chauffeur.prenom}" />
+                                        </h:column>
+
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="#{msg['entete.tcdateembauche']}"
+                                                              style="color: white; 
+                                                              font-size: 20px; 
+                                                              text-align: center"/>
+                                            </f:facet>
+                                            <h:outputText value="#{chauffeur.dateEmbauche}"
+                                                          style="margin-left: 20%">
+                                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                                            </h:outputText>
+                                        </h:column>
+
+                                        <h:column>
+                                            <h:commandButton value="#{msg.btnmodif}" action="#{chauffeurMB.selected(chauffeur)}"/>
+                                        </h:column>
+
+                                        <h:column>
+                                            <h:commandButton value="#{msg.btnsuppr}" action="#{chauffeurMB.delete(chauffeur)}"
+                                                             onclick="return confirm('confirmez la supression')">
+                                            </h:commandButton>
+                                        </h:column>
+
+                                    </h:dataTable>
+                                </h:column>
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>
+</html>

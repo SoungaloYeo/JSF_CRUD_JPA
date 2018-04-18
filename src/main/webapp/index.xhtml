@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view locale="#{traduction.localeCode}" >
+
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Projet parc-auto JPA-JSF</title>
+            <h:outputStylesheet name="css/default.css"/>
+            <h:outputStylesheet name="css/cssLayout.css"/>
+            <h:outputStylesheet name="cssperso/cssAcceuil.css"/>
+
+            <link rel="stylesheet" href="cssperso/cssAcceuil.css" type="text/css" media="all" />
+        </h:head>
+
+        <h:body>
+
+            <div id="top">
+                <ui:insert name="top">
+                    <h:panelGrid columns="3" styleClass="testStyle" style=" padding-top: 5px" border="0">
+                        <h:column>
+                            <h:graphicImage library="img" name="voitureroule.gif"  style="" height="40px"/>
+                        </h:column>
+                        <h:column >                              
+                            <b><h:outputText value="GEST. PARC-AUTO" style="font-size: 60px" /></b>
+                        </h:column>
+                        <h:column>
+                            <h:panelGrid columns="1" style="margin-left: 70%" >
+                                <h:form>
+                                    <p:selectOneMenu value="#{traduction.localeCode}" onchange="submit()" valueChangeListener="#{traduction.changerLangue}">
+                                        <f:selectItems value="#{traduction.mapCountryCode}" />
+                                    </p:selectOneMenu>
+                                </h:form>
+                            </h:panelGrid>
+                        </h:column>
+
+                    </h:panelGrid>
+                </ui:insert>
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+
+                        <h:form>                           
+                            <p:commandButton action="/chauffeur/list_chauffeur?faces-redirect=true" value="#{msg['label.chauffeurs']}"
+                                             style="width: 100%; border-radius: 15px; 
+                                             box-shadow: 2px 2px 2px black;font-size: 15px;
+                                             background-color:  yellowgreen; color: white" />
+
+                            <p:commandButton action="/voiture/list_voiture?faces-redirect=true" value="#{msg['label.voitures']}"
+                                             style="width: 100%; border-radius: 15px; 
+                                             box-shadow: 2px 2px 2px black;font-size: 15px;
+                                             background-color:  yellowgreen; color: white" />
+
+                            <p:commandButton action="/garage/list_garage?faces-redirect=true" value="#{msg['label.garages']}"
+                                             style="width: 100%; border-radius: 15px; 
+                                             box-shadow: 2px 2px 2px black; font-size: 15px;
+                                             background-color:  yellowgreen; color: white" />                           
+                        </h:form>
+
+                    </ui:insert>
+                </div>
+                <div id="content" class="left_content">
+                    <ui:insert name="content">
+
+                        <!--<h:graphicImage library="img" name="voiturephare.gif" height="500px" width="90%" />-->
+                        <!--<h:graphicImage library="img" name="voitureroule.gif" height="300px" width="60%" />-->
+                        <h:graphicImage library="img" name="HUMMER-H2.jpg" height="500px" width="100%" />
+
+                    </ui:insert>
+                </div>
+            </div>
+            <div id="bottom">
+                <ui:insert name="bottom">
+                    <br/><br/><br/><br/>
+                    <h:outputText value="by YEO Soungalo MAIL:soungaloyeo@gmail.com NUMERO: 225 08189366" 
+                                  style="margin-left: 76%;font-size: 10px; color: white"/>
+                </ui:insert>
+            </div>
+
+            <br />
+            <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        </h:body>
+    </f:view>
+</html>

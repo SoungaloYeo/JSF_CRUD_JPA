@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{traduction.localeCode}">
+
+        <body>
+
+            <ui:composition template="./../index.xhtml">
+
+                <ui:define name="content">
+                    <f:view>
+                        <h:form style="font-weight: bold">
+                            <h:commandButton action="add_voiture" value="#{msg['lien.ajouterunevoiture']}"
+                                             style="border-radius: 15px; box-shadow: 2px 2px 2px black;
+                                             font-size: 13px; background-color:  yellowgreen; color:
+                                             white; margin-left: 50%;margin-top: 1%"/><br/>                                         
+
+                            <h1><h:outputText value="#{msg['titre.listedesvoitures']}"
+                                              style="color: white; font-size: 50px; margin-left: 7%"/></h1>
+
+                            <h:panelGrid id="panel" columns="1" cellpadding="2px" cellspacing="20px" style="margin-left: 5%">
+                                <h:dataTable value="#{voitureMB.listVoiture}" var="voiture" style="font-size: 15px">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{msg['entete.tvimmat']}" style="color: white; font-size: 20px; text-align: center"/>
+                                        </f:facet>
+                                        <h:outputText value="#{voiture.immat}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{msg['entete.tvmarque']}" style="color: white; font-size: 20px; text-align: center"/>
+                                        </f:facet>
+                                        <h:outputText value="#{voiture.marque}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{msg['entete.tvcouleur']}" style="color: white; font-size: 20px; text-align: center"/>
+                                        </f:facet>
+                                        <h:outputText value="#{voiture.couleur}"/>
+                                    </h:column> 
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="#{msg['entete.tvchauffeur']}" style="color: white; font-size: 20px; text-align: center"/>
+                                        </f:facet>
+                                        <h:outputText value="#{voiture.chauffeur.prenom}"/>
+                                    </h:column> 
+                                    <h:column>
+                                        <h:commandButton value="#{msg.btnmodif}" action="#{voitureMB.selected(voiture)}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <h:commandButton value="#{msg.btnsuppr}" action="#{voitureMB.delete(voiture)}" onclick="return confirm('confirmez la supression')"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+
+                </ui:define>
+
+            </ui:composition>
+
+        </body>
+    </f:view>
+</html>
